@@ -104,6 +104,11 @@ app.use("/listings",listingRouter);      // ("/listings") is common in all listi
 app.use("/listings/:id/reviews",reviewRouter);   // ("/listings/:id/reviews") is common in all review routes thats why we replace it with "/"
 app.use("/",userRouter);    //  "/" is common for user user route
 
+app.get('/search', (req, res) => {
+  res.render('search.ejs');
+});
+
+
 // // route for all requests which we dont matchs on my route
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"page not found!")); // throw custom ExpressError
